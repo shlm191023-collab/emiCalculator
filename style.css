@@ -1,27 +1,40 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #1E1B4B, #4C1D95);
+  background: linear-gradient(135deg, #0F172A, #1E293B);
   color: white;
 }
 
 .container {
-  max-width: 400px;
-  margin: 50px auto;
+  max-width: 420px;
+  margin: 40px auto;
+  padding: 10px;
   text-align: center;
 }
 
+h1 {
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+.sub {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-bottom: 20px;
+}
+
 .card {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
   padding: 20px;
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
+  border-radius: 18px;
+  backdrop-filter: blur(12px);
 }
 
 .result-box {
-  background: linear-gradient(90deg, #3B82F6, #22D3EE);
-  padding: 20px;
-  border-radius: 15px;
+  background: linear-gradient(135deg, #2563EB, #06B6D4);
+  padding: 18px;
+  border-radius: 14px;
   margin-bottom: 20px;
 }
 
@@ -36,16 +49,35 @@ body {
 }
 
 .input-group label {
-  font-size: 14px;
-  opacity: 0.8;
+  font-size: 13px;
+  opacity: 0.7;
 }
 
 .value {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   margin: 5px 0;
 }
 
 input[type=range] {
   width: 100%;
+  accent-color: #22D3EE;
+}
+
+/* SEO Content */
+.content {
+  margin-top: 30px;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.content h3 {
+  margin-top: 20px;
+}
+
+.content a {
+  color: #22D3EE;
+  text-decoration: none;
 }
