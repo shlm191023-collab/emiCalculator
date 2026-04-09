@@ -1,3 +1,4 @@
+let chart;
 function formatCurrency(num) {
   return "₹" + Number(num).toLocaleString("en-IN");
 }
@@ -24,7 +25,40 @@ function calculateEMI() {
   document.getElementById("loanValue").innerText = formatCurrency(P);
   document.getElementById("rateValue").innerText = annualRate + "%";
   document.getElementById("yearsValue").innerText = years;
+  document.getElementById("principalValue").innerText = formatCurrency(P);
+  document.getElementById("interestValue").innerText = formatCurrency(Math.round(totalInterest));
+
+  // Chart
+  updateChart(P, totalInterest);
+  
   animateEMI(emi);
+}
+function updateChart(principal, interest) {
+  const ctx = document.getElementById('emiChart').getContext('2d');
+
+  if (chart) {
+    chart.destroy();
+  }
+
+  chart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Principal', 'Interest'],
+      datasets: [{
+        data: [principal, interest],
+        backgroundColor: ['#22d3ee', '#3b82f6']
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          labels: {
+            color: 'white'
+          }
+        }
+      }
+    }
+  });
 }
 
 document.querySelectorAll("input").forEach(input => {
