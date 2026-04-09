@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMI Calculator India 2026 – Calculate Monthly EMI Instantly</title>
+  <meta name="description" content="Calculate your EMI instantly. Enter loan amount, interest rate, and tenure to get accurate monthly EMI.">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>EMI Calculator</h1>
+
+  <div class="card">
+
+    <!-- RESULT -->
+    <div class="result-box">
+      <h2 id="emi">₹0</h2>
+      <p>Monthly EMI</p>
+    </div>
+
+    <!-- INPUTS -->
+    <div class="input-group">
+      <label>Loan Amount</label>
+      <div class="value" id="loanValue">₹10,00,000</div>
+      <input type="range" id="loan" min="100000" max="10000000" step="10000" value="1000000">
+    </div>
+
+    <div class="input-group">
+      <label>Interest Rate (%)</label>
+      <div class="value" id="rateValue">8%</div>
+      <input type="range" id="rate" min="1" max="20" step="0.1" value="8">
+    </div>
+
+    <div class="input-group">
+      <label>Loan Tenure (Years)</label>
+      <div class="value" id="yearsValue">20</div>
+      <input type="range" id="years" min="1" max="30" step="1" value="20">
+    </div>
+
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
