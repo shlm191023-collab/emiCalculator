@@ -182,3 +182,26 @@ input[type=range]::-webkit-slider-thumb {
   color: #38bdf8;
   text-decoration: none;
 }
+.breakdown {
+  width: 480px;
+  margin-top: 50px;
+  padding: 25px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  text-align: center;
+}
+
+.breakdown h2 {
+  margin-bottom: 20px;
+}
+
+.numbers {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.numbers h3 {
+  margin: 5px 0;
+}
