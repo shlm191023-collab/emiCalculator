@@ -41,19 +41,30 @@ body {
   margin-bottom: 20px; /* 👈 ADD THIS */
 }
 /* RESULT */
-.result-box {
+/*.result-box {
   background: linear-gradient(135deg, #3b82f6, #22d3ee);
   padding: 25px;
   border-radius: 18px;
   text-align: center;
   margin-bottom: 30px;
+}*/
+.result-box {
+  background: linear-gradient(135deg, #3b82f6, #22d3ee);
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 30px;
+  
+  box-shadow: 0 10px 30px rgba(34,211,238,0.3);
 }
-
-.result-box h2 {
+/*.result-box h2 {
   font-size: 42px;
   margin: 0;
+}*/
+.result-box h2 {
+  font-size: 56px;
+  font-weight: 600;
 }
-
 .result-box span {
   font-size: 14px;
   opacity: 0.9;
