@@ -271,3 +271,31 @@ tr:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(34,211,238,0.3);
 }
+.year-block {
+  margin-bottom: 15px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.04);
+}
+
+.year-header {
+  padding: 12px 16px;
+  cursor: pointer;
+  background: rgba(255,255,255,0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.year-header:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.year-content {
+  display: none;
+  padding: 10px;
+}
+
+.year-content table {
+  width: 100%;
+}
