@@ -37,9 +37,14 @@ function generateTable(P, r, n, emi) {
   let balance = P;
   let tbody = document.querySelector("#amortTable tbody");
 
+  if (!tbody) {
+    console.log("Table not found");
+    return;
+  }
+
   tbody.innerHTML = "";
 
-for (let i = 1; i <= Math.min(n, 120); i++) {
+  for (let i = 1; i <= Math.min(n, 120); i++) {
     let interest = balance * r;
     let principal = emi - interest;
     balance -= principal;
@@ -57,7 +62,6 @@ for (let i = 1; i <= Math.min(n, 120); i++) {
     tbody.innerHTML += row;
   }
 }
-
 function calculateEMI() {
   let P = Number(document.getElementById("loan").value);
   let annualRate = Number(document.getElementById("rate").value);
@@ -116,6 +120,8 @@ document.querySelectorAll("input").forEach(input => {
   input.addEventListener("input", calculateEMI);
 });
 
-calculateEMI();
+window.onload = function () {
+  calculateEMI();
+};
 
 
