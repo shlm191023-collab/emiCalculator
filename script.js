@@ -10,6 +10,19 @@ function animateEMI(value) {
     emiEl.style.transform = "scale(1)";
   }, 150);
 }
+function downloadPDF() {
+  const element = document.querySelector(".wrapper");
+
+  const opt = {
+    margin: 0.5,
+    filename: 'emi-report.pdf',
+    image: { type: 'jpeg', quality: 1 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+  };
+
+  html2pdf().set(opt).from(element).save();
+}
 
 /*function calculateEMI() {
   let P = document.getElementById("loan").value;
