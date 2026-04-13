@@ -643,3 +643,8 @@ input[type="number"] {
 .more-links a:hover {
   background: rgba(34, 211, 238, 0.25);
 }
+
+input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

@@ -10,7 +10,13 @@ const isFiveLakhPage = window.location.pathname.includes("five-lakh");
 
 const loanSlider = document.getElementById("loan");
 const loanValue = document.getElementById("loanValue");
+const rateSlider = document.getElementById("rate");
+const yearsSlider = document.getElementById("years");
 
+function setSlidersDisabled(disabled) {
+  if (rateSlider) rateSlider.disabled = disabled;
+  if (yearsSlider) yearsSlider.disabled = disabled;
+}
 
 function showToast(message) {
   toast.textContent = message;
@@ -34,10 +40,12 @@ function formatIndianNumber(value) {
 function validateLoanInput(num) {
   if (!num || num < 50000) {
     loanValue.classList.add("error");
+    setSlidersDisabled(true);
     return false;
   }
 
   loanValue.classList.remove("error");
+  setSlidersDisabled(false);
   return true;
 }
 
@@ -133,10 +141,11 @@ loanValue.addEventListener("input", (e) => {
 
   if (raw === "") {
     loanValue.classList.remove("error");
+    setSlidersDisabled(true);
     return;
   }
 
-  let num = parseInt(raw);
+  let num = parseInt(raw, 10);
 
   typingTimer = setTimeout(() => {
 
@@ -157,18 +166,22 @@ loanValue.addEventListener("input", (e) => {
 });
 
 loanValue.addEventListener("change", () => {
-  let val = parseInt(loanValue.value);
+  const rawValue = loanValue.value.replace(/,/g, "");
+  let val = parseInt(rawValue, 10);
 
   if (!val || val < 50000) {
     loanValue.classList.add("error");
+    setSlidersDisabled(true);
     return;
   }
+
+  setSlidersDisabled(false);
 
   if (val > loanSlider.max) {
     val = loanSlider.max;
   }
 
-  loanValue.value = val;
+  loanValue.value = formatIndianNumber(String(val));
   loanSlider.value = val;
 
   calculateEMI();
