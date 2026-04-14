@@ -16,18 +16,95 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+  <!--<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "What is a good EMI for a car loan?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Ideally, your EMI should not exceed 20–25% of your monthly income."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How is car loan EMI calculated?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Car loan EMI is calculated using loan amount, interest rate, and tenure using the reducing balance method."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I prepay my car loan?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes, most banks allow prepayment, but some may charge a small penalty."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What affects my car loan EMI?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Loan amount, interest rate, loan tenure, and credit score affect your EMI."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Which bank gives lowest car loan interest in India?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Banks like SBI, HDFC, and ICICI offer competitive car loan interest rates, depending on your credit profile."
+   }
+  }
+ ]
+}
+</script> -->
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "WebApplication",
+ "name": "Car Loan EMI Calculator India",
+ "url": "https://www.emicalculatorindia.com/car-loan-emi-calculator",
+ "applicationCategory": "FinanceApplication",
+ "operatingSystem": "All",
+ "description": "Calculate car loan EMI, interest, and total payment instantly using our free EMI calculator."
+}
+</script>
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "WebPage",
+ "name": "Car Loan EMI Calculator India",
+ "description": "Calculate EMI for car loan in India instantly with interest breakdown and amortization schedule.",
+ "url": "https://www.emicalculatorindia.com/car-loan-emi-calculator"
+}
+</script>
+  <!-- Google analytics tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZGBHQVZ1CT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-ZGBHQVZ1CT');
+  </script>
 </head>
 
 <body class="home-loan">
-    <div class="navbar">
-      <a href="./emi-calculator.html">Home</a>
-      <a href="./car-loan-emi-calculator.html">Car Loan</a>
-      <a href="./personal-loan-emi-calculator.html">Personal Loan</a>
-      <a href="./ten-lakh-emi-calculator.html">₹10L Loan</a>
-      <a href="./contact.html">Contact</a>
-    </div>
+  <div class="navbar">
+    <a href="./emi-calculator.html">Home</a>
+    <a href="./car-loan-emi-calculator.html">Car Loan</a>
+    <a href="./personal-loan-emi-calculator.html">Personal Loan</a>
+    <a href="./ten-lakh-emi-calculator.html">₹10L Loan</a>
+    <a href="./contact.html">Contact</a>
+  </div>
 
-    <div class="wrapper">
+  <div class="wrapper">
 
     <div class="header">
       <h1>Home Loan EMI Calculator</h1>
@@ -41,13 +118,30 @@
           <h2 id="emi">₹0</h2>
           <span>Your Monthly EMI</span>
         </div>
+        <!--Call To Action(CTA) -->
+        <div class="cta-main">
+          <!-- <h3>💸 Save EXTRA !!!</h3><br> -->
+          <p></p><br>
+          <!-- Text called in script.js - You are overpaying ₹${interest.toLocaleString("en-IN")} — fix this now! -->
 
+          <div class="cta-buttons">
+            <a id="mainCTA1" href="https://mdeal.in/c_7ogbCr5N" target="_blank" class="cta-btn btn-green"
+              rel="nofollow sponsored" onclick="trackCTA('hlResultLeft_cta')">
+              🔥Reduce Your EMI Today →
+            </a>
+
+            <a id="mainCTA2" href="https://mdeal.in/c_7ogbCr5N" target="_blank" class="cta-btn btn-blue"
+              rel="nofollow sponsored" onclick="trackCTA('hlResultRight_cta')">
+              ⚡ Check Lowest Rates →
+            </a>
+          </div>
+        </div>
         <!-- LOAN -->
         <div class="input-group">
           <label>Loan Amount</label>
           <!--<div class="value" id="loanValue"></div> -->
           <input type="text" id="loanValue" class="value-input">
-          <input type="range" id="loan" min="50000" max="200000000" step="100000" value="3000000">
+          <input type="range" id="loan" min="100000" max="100000000" step="100000" value="3000000">
         </div>
 
         <!-- INTEREST -->
@@ -75,6 +169,15 @@
           <div><span>Total interest</span><strong id="interestValue">₹0</strong></div>
           <div><span>Total amount</span><strong id="totalPaymentValue">₹0</strong></div>
         </div>
+        <!-- Call To Action (CTA) -->
+        <div class="cta-breakdown">
+          <p>💰 You can reduce your EMI & save money</p>
+
+          <a id="breakdownCTA" href="https://mdeal.in/c_7ogbCr5N" target="_blank" class="cta-btn btn-green"
+            rel="nofollow sponsored" onclick="trackCTA('hlChart_cta')">
+            ⚡ See Best Deals in 2 Minutes →
+          </a>
+        </div>
       </div>
     </div>
     <div class="table-section">
@@ -92,7 +195,7 @@
 
     <!-- SEO CONTENT -->
     <div class="content">
-      <h2 style="margin-top:40px;">EMI Calculation Guide</h2>
+      <h2 style="margin-top:5px;">EMI Calculation Guide</h2>
       <p>
         Use this <strong>Home Loan EMI Calculator</strong> to calculate your monthly housing loan EMI instantly.
         Plan your finances better by understanding your <strong>monthly payment, total interest, and repayment
@@ -102,10 +205,10 @@
       <h3>🏠 Why Use a Home Loan EMI Calculator?</h3>
       <p>
         ✔ Helps you plan long-term finances<br>
-        ✔ Understand total interest payable<br>  
+        ✔ Understand total interest payable<br>
         ✔ Compare loan options easily
       </p>
-     
+
       <h3>📊 Example EMI Breakdown</h3>
       <p>
         Loan Amount: ₹30,00,000<br>
@@ -121,19 +224,20 @@
         principal and interest. <br>
 
         <strong><i>Loan Amount: </i></strong>The original amount of money borrowed.<br>
-        
-        <strong><i>Interest Rate: </i></strong>The percentage charged on the principal amount, which can be Fixed (constant) or Floating (varies with market rates).<br>
-        
+
+        <strong><i>Interest Rate: </i></strong>The percentage charged on the principal amount, which can be Fixed
+        (constant) or Floating (varies with market rates).<br>
+
         <strong><i>Tenure: </i></strong>The total duration within which the loan must be repaid.<br>
-        
+
         <strong><i>Total Amount: </i></strong>The sum of the principal and interest paid over the entire loan tenure.
       </p>
-      
+
       <h3>Try Related Calculators</h3>
       <ul>
         <a href="./personal-loan-emi-calculator.html" aria-orientation="horizontal">Personal Loan EMI Calculator </a>
         <a href="./car-loan-emi-calculator.html" aria-orientation="horizontal">Car Loan EMI Calculator </a>
-        <a href="./ten-lakh-emi-calculator.html" aria-orientation="horizontal">₹10 Lakh EMI Calculator </a> 
+        <a href="./ten-lakh-emi-calculator.html" aria-orientation="horizontal">₹10 Lakh EMI Calculator </a>
         <a href="./five-lakh-emi-calculator.html" aria-orientation="horizontal">₹5 Lakh EMI Calculator </a>
         <a href="./three-lakh-emi-calculator.html" aria-orientation="horizontal">₹3 Lakh EMI Calculator </a>
         <a href="./two-lakh-emi-calculator.html" aria-orientation="horizontal">₹2 Lakh EMI Calculator </a>
@@ -163,6 +267,15 @@
   </p>
   <script defer src="./script.js"></script>
   <div id="toast" class="toast"></div>
+  <a href="https://mdeal.in/c_7ogbCr5N" target="_blank" class="sticky-cta" style="text-decoration: none;"
+    rel="nofollow sponsored" onclick="trackCTA('hlSticky_cta')">
+    🔥 Check Best Loan Offers!
+  </a>
+  <!-- 🔥 ADD CUELINKS SCRIPT HERE -->
+  <script type="text/javascript">
+    var cId = "XXXXXXXXYOUR_CUELINKS_ID";
+  </script>
+  <script src="https://cdn.cuelinks.com/js/cuelinks.js"></script>
 
 </body>
 

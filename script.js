@@ -13,6 +13,13 @@ const loanValue = document.getElementById("loanValue");
 const rateSlider = document.getElementById("rate");
 const yearsSlider = document.getElementById("years");
 
+function trackCTA(name) {
+  gtag('event', 'cta_click', {
+    event_category: 'engagement',
+    event_label: name
+  });
+}
+
 function setSlidersDisabled(disabled) {
   if (rateSlider) rateSlider.disabled = disabled;
   if (yearsSlider) yearsSlider.disabled = disabled;
@@ -49,9 +56,6 @@ function validateLoanInput(num) {
   return true;
 }
 
-
-
-
 loanValue.addEventListener("focus", () => {
   isTyping = true;
 });
@@ -62,61 +66,6 @@ loanValue.addEventListener("blur", () => {
 
 // INPUT → SLIDER
 const errorText = document.getElementById("loanError");
-
-/*loanValue.addEventListener("input", () => {
-  let val = loanValue.value;
-
-  if (val === "") {
-    loanValue.classList.remove("error");
-    return;
-  }
-
-  let num = parseInt(val);
-
-  if (num < 50000) {
-    loanValue.classList.add("error");
-    showToast("Minimum value must be ₹50,000");
-  } else {
-    loanValue.classList.remove("error");
-    loanSlider.value = num;
-  }
-  
-}); */
-
-/*loanValue.addEventListener("input", () => {
-  clearTimeout(typingTimer);
-
-  let val = loanValue.value;
-
-  // Allow empty typing (no error, no calculation)
-  if (val === "") {
-    loanValue.classList.remove("error");
-    return;
-  }
-
-  let num = parseInt(val);
-
-  // Debounce (wait for user to finish typing)
-  typingTimer = setTimeout(() => {
-
-    if (num < 50000) {
-      loanValue.classList.add("error");
-      showToast("Minimum value must be ₹50,000");
-      return;
-    }
-
-    // ✅ VALID FLOW
-    loanValue.classList.remove("error");
-
-    // Sync slider
-    loanSlider.value = num;
-
-    // 🔥 Force update everywhere
-    calculateEMI();
-
-  }, 300); // delay for smooth UX
-}); */
-
 loanValue.addEventListener("input", (e) => {
   clearTimeout(typingTimer);
 
@@ -196,10 +145,6 @@ if (isFiveLakhPage) {
   if (loanSlider) loanSlider.value = 500000;
   loanValue.innerText = "₹5,00,000";
 }
-
-/*if (loanSlider && !isTenLakhPage && !isFiveLakhPage) {
-  loanSlider.addEventListener("input", calculateEMI);
-}*/
 
 if (loanSlider && !isTenLakhPage && !isFiveLakhPage) {
   /*loanSlider.addEventListener("input", () => {
@@ -603,6 +548,14 @@ function calculateEMI() {
   updateSliderFill(document.getElementById("loan"));
   updateSliderFill(document.getElementById("rate"));
   updateSliderFill(document.getElementById("years"));
+
+  const interest = Math.round(totalInterest);
+  const ctaMain = document.querySelector(".cta-main p");
+  if (ctaMain) {
+      /*ctaMain.innerHTML = `Save up to ₹${interest.toLocaleString("en-IN")} on Interest by choosing a better loan`;*/
+      ctaMain.innerHTML = `You are overpaying ₹${interest.toLocaleString("en-IN")} on Interest — Fix this now!`;
+  }
+
 }
 
 function updateChart(principal, interest) {
@@ -664,6 +617,94 @@ function updateChart(principal, interest) {
 document.querySelectorAll("input").forEach(input => {
   input.addEventListener("input", calculateEMI);
 });
+
+// ===== A/B TEST CTA =====
+
+/*const tataLink = "https://mdeal.in/c_7ogbCr5N";
+// Choose version randomly
+const variant = Math.random() < 0.5 ? "A" : "B";
+// Save variant (so same user sees same CTA)
+localStorage.setItem("cta_variant", variant);
+
+// Apply CTA text
+const ctaBtn = document.getElementById("mainCTA");
+if (ctaBtn) {
+  if (variant === "A") {
+    ctaBtn.innerText = "🔥 Reduce Your EMI Today →";
+  } else {
+    ctaBtn.innerText = "⚡ Check Lowest Rates →";
+  }
+
+  ctaBtn.href = tataLink;
+
+  // Track clicks
+  ctaBtn.addEventListener("click", () => {
+    let clicks = JSON.parse(localStorage.getItem("cta_clicks")) || { A: 0, B: 0 };
+    clicks[variant]++;
+    localStorage.setItem("cta_clicks", JSON.stringify(clicks));
+  });
+}
+
+const breakdownCTA = document.getElementById("breakdownCTA");
+if (breakdownCTA) {
+  const savedVariant = localStorage.getItem("cta_variant") || "A";
+
+  if (savedVariant === "A") {
+    breakdownCTA.innerText = "⚡ See Best Deals in 2 Minutes →";
+  } else {
+    breakdownCTA.innerText = "🔥 Get Lowest EMI Offers →";
+  }
+
+  breakdownCTA.href = tataLink;
+}
+
+*/
+
+// Pulse CTA every few seconds
+const ctas = document.querySelectorAll('.cta-btn');
+
+let currentIndex = 0;
+
+function pulseNext() {
+  // Remove all
+  ctas.forEach(btn => btn.classList.remove('cta-pulse'));
+
+  // Add to current
+  const btn = ctas[currentIndex];
+  btn.classList.add('cta-pulse');
+
+  // Remove after animation ends
+  setTimeout(() => {
+    btn.classList.remove('cta-pulse');
+
+    // Next button
+    currentIndex = (currentIndex + 1) % ctas.length;
+
+    pulseNext(); // loop
+  }, 2000);
+}
+
+// Start loop
+pulseNext();
+
+//Bottom sticky CTA on scroll + mouse move
+const sticky = document.querySelector('.sticky-cta');
+
+let hideTimer;
+
+// Show on interaction
+function showSticky() {
+  sticky.classList.remove('sticky-hidden');
+
+  clearTimeout(hideTimer);
+  hideTimer = setTimeout(() => {
+    sticky.classList.add('sticky-hidden');
+  }, 3000);
+}
+
+// Scroll + mouse = trigger
+window.addEventListener('scroll', showSticky);
+document.addEventListener('mousemove', showSticky);
 
 window.onload = function () {
   const defaultLoan = parseInt(loanSlider.value);
